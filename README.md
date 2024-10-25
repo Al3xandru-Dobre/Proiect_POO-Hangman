@@ -1,4 +1,4 @@
-# Titlu proiect
+# Joc spânzurătoarea
 
 ## Descriere proiect
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -6,8 +6,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ## Milestone #0
 
 - [ ] Nume proiect (poate fi schimbat ulterior)
-- [ ] Scurtă descriere a temei alese, ce v-ați propus să implementați
-
+- [ ] Vreau să implementez un joc în care trebuie ghicite anumite cuvinte random din limba română. Voi implementa anumite animații pentru afișarea greșelilor și un dicționar de cuvinte.
+Un sistem de hinturi dinamic.
+Un sistem care să ofere informații potrivite despre cuvânt în funcție de nivelul de dificultate
+Alegerea unor categorii de cuvinte din anumite arii sau domenii.
+Implementarea unui sistem de contra cronometru.
+Animații și diferite background uri.
 ## Milestone #1
 
 #### Cerințe
