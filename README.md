@@ -1,17 +1,20 @@
 # Joc spânzurătoarea
 
 ## Descriere proiect
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Este vorba despre un joc de spânzurătoarea cu câteva îmbunătățirii și adaosuri care mi se par că ar face jocul mai interesant. Un sistem simplu de animații care să avertizeze jucătorul stadiul său în procesul
+de a ghicii cuvinte, background uri customizabile, alegerea dificultății cât și aria de interes din care pot fi alese cuvintele.
+Totodată vreau să adaug și un timer care poate fi setat de jucător, în timpul acesta jucătorul trebuie să ghicească cât mai multe cuvinte și îi este acordat un scor.
 
 ## Milestone #0
 
 - [ ] Hangman enhanced 
 - [ ] Vreau să implementez un joc în care trebuie ghicite anumite cuvinte random din limba română. Voi implementa anumite animații pentru afișarea greșelilor și un dicționar de cuvinte.
 Un sistem de hinturi dinamic.
-Un sistem care să ofere informații potrivite despre cuvânt în funcție de nivelul de dificultate
+Un sistem care să ofere informații potrivite despre cuvânt în funcție de nivelul de dificultate.
 Alegerea unor categorii de cuvinte din anumite arii sau domenii.
 Implementarea unui sistem de contra cronometru.
 Animații și diferite background uri.
+Implementare de score și leaderboards.
 ## Milestone #1
 
 #### Cerințe
