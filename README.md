@@ -5,7 +5,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ## Milestone #0
 
-- [ ] Nume proiect (poate fi schimbat ulterior)
+- [ ] Hangman enhanced 
 - [ ] Vreau să implementez un joc în care trebuie ghicite anumite cuvinte random din limba română. Voi implementa anumite animații pentru afișarea greșelilor și un dicționar de cuvinte.
 Un sistem de hinturi dinamic.
 Un sistem care să ofere informații potrivite despre cuvânt în funcție de nivelul de dificultate
