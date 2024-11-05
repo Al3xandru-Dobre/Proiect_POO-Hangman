@@ -236,7 +236,8 @@ int main() {
     HintSystem hintSystem(3, 30);
     hintSystem.setHints({"Primul hint", "Al doilea hint", "Al treilea hint"});
     GameTimer timer(300);
-
+        //Inca nu am implementat sistemul de hint-uri complet
+    //am doar clasa si initializarile si cateva metode 
     std::string numeJucator;
     std::cout << "Introduceti numele jucătorului: ";
     std::cin >> numeJucator;
@@ -246,6 +247,7 @@ int main() {
     while (!timer.isTimeUp() && !ui.gameWon()) {
         ui.start();
 
+        //ar trebui adaugat aici condiitii speciale pentru a primi hint-uri la posibile greseli sau la anumite butoane
         if (ui.gameWon()) {
             leaderboard.actualizeazaScor(numeJucator, 10);
             break;
@@ -253,6 +255,7 @@ int main() {
             std::cout << "Încercați din nou!\n";
         }
 
+        
         std::cout << "Timp ramas: " << timer.getTimeRemaining() << " secunde\n";
 
         hintSystem.provideHint();
