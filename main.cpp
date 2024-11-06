@@ -193,7 +193,7 @@ public:
     }
 
     void displayStatus() const {
-        std::cout << "Cuvant: " << guessedWord << "\n";
+        std::cout << "Cuvantul: " << guessedWord << "\n";
         std::cout << "Incercari ramase: " << attemptsRemaining << "\n";
     }
     friend class HangmanUI;
