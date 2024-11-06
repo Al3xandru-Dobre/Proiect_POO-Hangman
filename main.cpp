@@ -4,6 +4,7 @@
 #include <chrono>
 #include <ctime>
 #include <cstdlib>
+#include <algorithm>
 
 class Scor {
 protected:
