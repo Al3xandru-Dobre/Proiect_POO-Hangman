@@ -31,7 +31,6 @@ public:
     }
 };
 
-
 class Leaderboard : public Scor {
 private:
     std::vector<Scor> listaScoruri;
@@ -56,7 +55,6 @@ public:
     }
 
     void afiseazaLeaderboard() const {
-
         std::vector<Scor> scoruriOrdonate = listaScoruri;
         std::sort(scoruriOrdonate.begin(), scoruriOrdonate.end(), [](const Scor& a, const Scor& b) {
             return a.getScorCurent() > b.getScorCurent();
@@ -66,39 +64,6 @@ public:
         for (const auto& scor : scoruriOrdonate) {
             std::cout << scor.getNumeJucator() << ": " << scor.getScorCurent() << "\n";
         }
-    }
-};
-
-class HintSystem {
-private:
-    std::vector<std::string> hints;
-    int hintsAvailable;
-    std::chrono::steady_clock::time_point lastHintTime;
-    int hintInterval;
-
-public:
-    HintSystem(int maxHints, int interval) : hintsAvailable(maxHints), hintInterval(interval) {}
-
-    void setHints(const std::vector<std::string>& hintList) {
-        hints = hintList;
-    }
-
-    void provideHint() {
-        auto currentTime = std::chrono::steady_clock::now();
-        auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - lastHintTime).count();
-
-        if (hintsAvailable > 0 && elapsedTime >= hintInterval) {
-            std::cout << "Hint: " << hints.back() << "\n";
-            hints.pop_back();
-            hintsAvailable--;
-            lastHintTime = currentTime;
-        } else {
-            std::cout << "Hint not available yet.\n";
-        }
-    }
-
-    int getHintsAvailable() const {
-        return hintsAvailable;
     }
 };
 
@@ -136,7 +101,6 @@ public:
     }
 
     void selectRandomWord() {
-        srand(static_cast<unsigned int>(time(0)));
         int index = rand() % wordList.size();
         selectedWord = wordList[index];
     }
@@ -151,11 +115,10 @@ public:
 };
 
 class Game {
-private:
+protected:
     WordManager wordManager;
     std::string guessedWord;
     int attemptsRemaining;
-    std::vector<char> guessedLetters;
 
 public:
     Game() : attemptsRemaining(6) {
@@ -164,12 +127,22 @@ public:
     }
 
     bool guessLetter(char letter) {
-        if (wordManager.isLetterInWord(letter)) {
-            for (size_t i = 0; i < wordManager.getSelectedWord().size(); i++) {
-                if (wordManager.getSelectedWord()[i] == letter) {
-                    guessedWord[i] = letter;
-                }
+        bool found = false;
+        for (size_t i = 0; i < wordManager.getSelectedWord().size(); i++) {
+            if (wordManager.getSelectedWord()[i] == letter) {
+                guessedWord[i] = letter;
+                found = true;
             }
+        }
+        if (!found) {
+            attemptsRemaining--;
+        }
+        return found;
+    }
+
+    bool guessWord(const std::string& word) {
+        if (word == wordManager.getSelectedWord()) {
+            guessedWord = word;
             return true;
         } else {
             attemptsRemaining--;
@@ -193,36 +166,84 @@ public:
         return guessedWord;
     }
 
+    std::string getSelectedWord() const {  // Added this getter method
+        return wordManager.getSelectedWord();
+    }
+
     void displayStatus() const {
-        std::cout << "Cuvantul: " << guessedWord << "\n";
+        std::cout << "Cuvant: " << guessedWord << "\n";
         std::cout << "Incercari ramase: " << attemptsRemaining << "\n";
     }
-    friend class HangmanUI;
+};
+
+class HintGame : public Game {
+private:
+    std::vector<std::string> hints;
+    int hintsAvailable;
+
+public:
+    HintGame(int maxHints) : hintsAvailable(maxHints) {}
+
+    void setHints(const std::vector<std::string>& hintList) {
+        hints = hintList;
+    }
+
+    void provideHint() {
+        if (hintsAvailable > 0 && !hints.empty()) {
+            std::cout << "Hint: " << hints.back() << "\n";
+            hints.pop_back();
+            hintsAvailable--;
+        } else {
+            std::cout << "Nu mai sunt hint-uri disponibile.\n";
+        }
+    }
+
+    bool requestHintOnIncorrectGuess() {
+        if (hintsAvailable > 0) {
+            provideHint();
+            return true;
+        }
+        return false;
+    }
 };
 
 class HangmanUI {
-    Game game;
+    HintGame game;
 
 public:
+    HangmanUI() : game(3) {
+        game.setHints({"Primul hint", "Al doilea hint", "Al treilea hint"});
+    }
+
     void start() {
-        char letter;
+        std::string input;
         std::cout << "Bine ai venit la jocul de Spanzuratoarea!\n";
 
         while (!game.isGameOver() && !game.isGameWon()) {
             game.displayStatus();
-            std::cout << "Introdu o litera: ";
-            std::cin >> letter;
-            if (game.guessLetter(letter)) {
-                std::cout << "Litera " << letter << " se afla in cuvant!\n";
+            std::cout << "Introdu o litera sau un cuvant complet: ";
+            std::cin >> input;
+
+            bool correctGuess;
+            if (input.size() == 1) { // Este o literă
+                char letter = input[0];
+                correctGuess = game.guessLetter(letter);
+            } else { // Este un cuvânt întreg
+                correctGuess = game.guessWord(input);
+            }
+
+            if (correctGuess) {
+                std::cout << "Ai ghicit corect!\n";
             } else {
-                std::cout << "Litera " << letter << " NU se afla in cuvant.\n";
+                std::cout << "Nu ai ghicit corect.\n";
+                game.requestHintOnIncorrectGuess(); // Oferă hint după un răspuns greșit, dacă e disponibil
             }
         }
 
         if (game.isGameWon()) {
             std::cout << "Felicitari! Ai ghicit cuvantul: " << game.getGuessedWord() << "\n";
         } else {
-            std::cout << "Ai pierdut! Cuvantul era: " << game.getGuessedWord() << "\n";
+            std::cout << "Ai pierdut! Cuvantul era: " << game.getSelectedWord() << "\n"; // Using the getter method
         }
     }
 
@@ -232,23 +253,20 @@ public:
 };
 
 int main() {
+    srand(static_cast<unsigned int>(time(0)));
     HangmanUI ui;
     Leaderboard leaderboard;
-    HintSystem hintSystem(3, 30);
-    hintSystem.setHints({"Primul hint", "Al doilea hint", "Al treilea hint"});
     GameTimer timer(300);
-        //Inca nu am implementat sistemul de hint-uri complet
-    //am doar clasa si initializarile si cateva metode 
+
     std::string numeJucator;
-    std::cout << "Introduceti numele jucatorului: ";
+    std::cout << "Introduceti numele jucătorului: ";
     std::cin >> numeJucator;
 
     leaderboard.adaugaJucator(numeJucator);
 
-    while (!timer.isTimeUp() && !ui.gameWon()) {
+    while (!timer.isTimeUp()) {
         ui.start();
 
-        //ar trebui adaugat aici condiitii speciale pentru a primi hint-uri la posibile greseli sau la anumite butoane
         if (ui.gameWon()) {
             leaderboard.actualizeazaScor(numeJucator, 10);
             break;
@@ -256,17 +274,13 @@ int main() {
             std::cout << "Încercați din nou!\n";
         }
 
-        
         std::cout << "Timp ramas: " << timer.getTimeRemaining() << " secunde\n";
-
-        hintSystem.provideHint();
 
         leaderboard.afiseazaLeaderboard();
     }
 
-    std::cout << "Timpul a expirat! Jocul s-a incheiat.\n";
+    std::cout << "Timpul a expirat! Jocul s-a încheiat.\n";
     leaderboard.afiseazaLeaderboard();
 
     return 0;
 }
-
