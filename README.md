@@ -5,6 +5,9 @@ Este vorba despre un joc de spânzurătoarea cu câteva îmbunătățirii și ad
 de a ghicii cuvinte, background uri customizabile, alegerea dificultății cât și aria de interes din care pot fi alese cuvintele.
 Totodată vreau să adaug și un timer care poate fi setat de jucător, în timpul acesta jucătorul trebuie să ghicească cât mai multe cuvinte și îi este acordat un scor.
 
+
+INFORMATII NOI SE GASESC IN BRANCH-UL MASTER ALATURI DE UN README
+
 ## Milestone #0
 
 - [ ] Hangman enhanced 
