@@ -1,0 +1,26 @@
+# ninja log v6
+22	1738	7539781983661509	CMakeFiles/hangman_demo_v0_1.dir/main.cpp.obj	45698017768ef753
+979	1462	7539782257127014	hangman_demo_v0_1.exe	78934ade59cf4b23
+2	380	7539804161695722	build.ninja	534669061db8a447
+60	881	7539781984032132	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Geografie.cpp.obj	2fa409292eb37b04
+26	648	7539781983696817	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/scor.cpp.obj	132a1bfa5390391d
+49	876	7539781983932833	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hint_Game.cpp.obj	d8902cd708015cab
+43	1085	7539781983874083	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game.cpp.obj	ce86952c35f204ed
+29	880	7539781983722996	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Leaderboard.cpp.obj	7da19e74e4a5e5e3
+37	1083	7539781983815168	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Word_Manager.cpp.obj	a27a97fca6bb1381
+65	1084	7539781984089594	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Technology.cpp.obj	426b74f96d67cc77
+55	1132	7539781983987685	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hangman_UI.cpp.obj	d6151986dfabb35d
+32	1249	7539781983758512	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game_Timer.cpp.obj	ef965dc53175f7e1
+9	979	7539782247440260	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Animal.cpp.obj	393e327143ebc440
+41	999	7539804260368689	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/scor.cpp.obj	d49f1dd13e66442
+95	1333	7539804260907164	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Animal.cpp.obj	79cbec71ee8319a1
+82	1334	7539804260782643	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Geografie.cpp.obj	24a4cac9a6bbb98
+76	1343	7539804260721754	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hangman_UI.cpp.obj	46b02d9ad5aa4f6
+70	1371	7539804260651538	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hint_Game.cpp.obj	a6f558e254e4514b
+46	1455	7539804260421095	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Leaderboard.cpp.obj	d72306ab1c18f5cd
+89	1466	7539804260851402	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Technology.cpp.obj	4001a91d1b3c8bd7
+64	1467	7539804260597734	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game.cpp.obj	7803522c1c3638a
+57	1527	7539804260534814	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Word_Manager.cpp.obj	689093a727159078
+52	1831	7539804260481846	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game_Timer.cpp.obj	f39542b7136e297d
+35	2141	7539804260305951	CMakeFiles/hangman_demo_v0_1.dir/main.cpp.obj	c752ba48b4f4b916
+2141	2520	7539804281368462	hangman_demo_v0_1.exe	78934ade59cf4b23
