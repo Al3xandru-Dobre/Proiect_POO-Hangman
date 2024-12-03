@@ -20,5 +20,9 @@
         auto currentTime = std::chrono::steady_clock::now();
         auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(currentTime - startTime).count();
         return timeLimit - elapsed;
+<<<<<<< HEAD
     }
 
+=======
+    }
+>>>>>>> a1039bfa419783e09da6ceef0121c2b9e26aabc5

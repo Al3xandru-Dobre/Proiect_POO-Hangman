@@ -24,5 +24,8 @@ add_executable(hangman_demo_v0_1 main.cpp
         src/headers/Technology.hpp
         src/cpp/Technology.cpp
         src/cpp/Animal.cpp
+<<<<<<< HEAD
         src/cpp/DefaultWordManager.cpp
+=======
+>>>>>>> a1039bfa419783e09da6ceef0121c2b9e26aabc5
 )

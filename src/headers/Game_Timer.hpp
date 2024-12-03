@@ -18,8 +18,11 @@ public:
     bool isTimeUp() const;
 
     int getTimeRemaining() const ;
+<<<<<<< HEAD
 
     virtual ~GameTimer() = default;
+=======
+>>>>>>> a1039bfa419783e09da6ceef0121c2b9e26aabc5
 };
 
 
