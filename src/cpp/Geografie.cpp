@@ -6,10 +6,6 @@
 
 
 GeographyWordManager::GeographyWordManager() {
-<<<<<<< HEAD
-=======
-    //std::cout << "GeographyWordManager constructor\n";
->>>>>>> a1039bfa419783e09da6ceef0121c2b9e26aabc5
     loadWordsFromFile("geography_words.txt", "geography");
 }
 
