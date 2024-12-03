@@ -1,19 +1,17 @@
 # ninja log v6
-19	803	7549566300477893	CMakeFiles/hangman_demo_v0_1.dir/main.cpp.obj	c752ba48b4f4b916
-1210	1436	7549566312389040	hangman_demo_v0_1.exe	761fe6834e7a057d
-30	289	7549611693916684	build.ninja	22b64c3a7713b065
+4	934	7549612711363835	CMakeFiles/hangman_demo_v0_1.dir/main.cpp.obj	c752ba48b4f4b916
+934	1258	7549612720650833	hangman_demo_v0_1.exe	761fe6834e7a057d
+1	300	7549615466748854	build.ninja	22b64c3a7713b065
 33	750	7549566300613590	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Geografie.cpp.obj	24a4cac9a6bbb98
 41	999	7539804260368689	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/scor.cpp.obj	d49f1dd13e66442
 28	908	7549566300566485	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hint_Game.cpp.obj	a6f558e254e4514b
-25	1210	7549566300538901	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game.cpp.obj	7803522c1c3638a
-46	1455	7539804260421095	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Leaderboard.cpp.obj	d72306ab1c18f5cd
 41	752	7549566300698043	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/DefaultWordManager.cpp.obj	371d7547667dd3e3
+8	892	7549612711394117	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game.cpp.obj	7803522c1c3638a
+46	1455	7539804260421095	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Leaderboard.cpp.obj	d72306ab1c18f5cd
 22	803	7549566300508761	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Word_Manager.cpp.obj	689093a727159078
 36	751	7549566300640628	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Technology.cpp.obj	4001a91d1b3c8bd7
 30	800	7549566300592750	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hangman_UI.cpp.obj	46b02d9ad5aa4f6
 9	786	7549507178448873	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game_Timer.cpp.obj	f39542b7136e297d
 38	802	7549566300661991	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Animal.cpp.obj	79cbec71ee8319a1
-1	300	7549611693916684	build.ninja	22b64c3a7713b065
-8	892	7549612711394117	CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game.cpp.obj	7803522c1c3638a
-4	934	7549612711363835	CMakeFiles/hangman_demo_v0_1.dir/main.cpp.obj	c752ba48b4f4b916
-934	1258	7549612720650833	hangman_demo_v0_1.exe	761fe6834e7a057d
+25	285	7549615466748854	build.ninja	22b64c3a7713b065
+15	205	7549615467623137	artifacts/bin/hangman_demo_v0_1.exe	d6727ab13929dd56

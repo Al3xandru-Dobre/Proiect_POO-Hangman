@@ -139,15 +139,15 @@ build CMakeFiles/hangman_demo_v0_1.dir/src/cpp/DefaultWordManager.cpp.obj: CXX_C
 
 
 #############################################
-# Link the executable hangman_demo_v0_1.exe
+# Link the executable artifacts\bin\hangman_demo_v0_1.exe
 
-build hangman_demo_v0_1.exe: CXX_EXECUTABLE_LINKER__hangman_demo_v0_1_Debug CMakeFiles/hangman_demo_v0_1.dir/main.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/scor.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Leaderboard.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game_Timer.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Word_Manager.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hint_Game.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hangman_UI.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Geografie.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Technology.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Animal.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/DefaultWordManager.cpp.obj
+build artifacts/bin/hangman_demo_v0_1.exe: CXX_EXECUTABLE_LINKER__hangman_demo_v0_1_Debug CMakeFiles/hangman_demo_v0_1.dir/main.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/scor.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Leaderboard.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game_Timer.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Word_Manager.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hint_Game.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hangman_UI.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Geografie.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Technology.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Animal.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/DefaultWordManager.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\hangman_demo_v0_1.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = hangman_demo_v0_1.exe
+  TARGET_FILE = artifacts\bin\hangman_demo_v0_1.exe
   TARGET_IMPLIB = libhangman_demo_v0_1.dll.a
   TARGET_PDB = hangman_demo_v0_1.exe.dbg
 
@@ -177,7 +177,9 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build hangman_demo_v0_1: phony hangman_demo_v0_1.exe
+build hangman_demo_v0_1: phony artifacts/bin/hangman_demo_v0_1.exe
+
+build hangman_demo_v0_1.exe: phony artifacts/bin/hangman_demo_v0_1.exe
 
 # =============================================================================
 # Folder targets.
@@ -187,7 +189,7 @@ build hangman_demo_v0_1: phony hangman_demo_v0_1.exe
 #############################################
 # Folder: E:/POO/hangman_demo_v0.2/cmake-build-debug
 
-build all: phony hangman_demo_v0_1.exe
+build all: phony artifacts/bin/hangman_demo_v0_1.exe
 
 # =============================================================================
 # Built-in targets
