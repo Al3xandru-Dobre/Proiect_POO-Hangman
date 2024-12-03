@@ -7,6 +7,7 @@ Totodată vreau să adaug și un timer care poate fi setat de jucător, în timp
 
 
 INFORMATII NOI SE GASESC IN BRANCH-UL MASTER ALATURI DE UN README
+https://github.com/Al3xandru-Dobre/Proiect_POO-Hangman/blob/330191fe239e5833775f7e23cc33cd5d0c2ff334/README.md
 
 ## Milestone #0
 
