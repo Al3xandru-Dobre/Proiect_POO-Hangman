@@ -33,3 +33,5 @@ std::string WordManager::getSelectedWord() const {
 bool WordManager::isLetterInWord(char letter) const {
         return selectedWord.find(letter) != std::string::npos;
     }
+
+

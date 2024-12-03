@@ -1,48 +1,52 @@
-//
-// Created by Alex on 20.11.2024.
-//
-
 #include "headers/Hangman_UI.hpp"
 #include <iostream>
-#include "headers/Word_Manager.hpp"
 
-    HangmanUI::HangmanUI() : Game(std::make_unique<HintGame>(),std::make_unique<DefaultWordManager>(), 6) {
-        HintGame game(3);
-        game.setHints({"Primul hint", "Al doilea hint", "Al treilea hint"});
-    }
+//Constructor: receives configured instances of Game and HintGame
+HangmanUI::HangmanUI(Game& gameInstance, HintGame* hintInstance)
+    : game(gameInstance), hintGame(*hintInstance) {}
 
-    void HangmanUI::start(HintGame game) {
-        std::string input;
-        std::cout << "Bine ai venit la jocul de Spanzuratoarea!\n";
+// Starts the game
+void HangmanUI::start() {
+    std::string input;
+    std::cout << "Bine ai venit la jocul de Spanzuratoarea!\n";
 
-        while (!Game.isGameOver() && !Game.isGameWon()) {
-            Game.displayStatus();
-            std::cout << "Introdu o litera sau un cuvant complet: ";
+    try {
+        while (!game.isGameOver() && !game.isGameWon()) {
+            game.displayStatus(); // Display the progress of the game
+            std::cout << "Introdu o litera sau un cuvant complet (sau scrie 'Hint' pentru un indiciu): ";
             std::cin >> input;
 
+            if (input == "Hint" || input == "hint") {
+                hintGame.offerHintDirect();
+                continue; // Ignores the input in order to not trigger the guess
+            }
+
             bool correctGuess;
-            if (input.size() == 1) { // Este o literă
+            if (input.size() == 1) { // a single letter
                 char letter = input[0];
-                correctGuess = Game.guessLetter(letter);
-            } else { // Este un cuvânt întreg
-                correctGuess = Game.guessWord(input);
+                correctGuess = game.guessLetter(letter);
+            } else { // It is a whole word
+                correctGuess = game.guessWord(input);
             }
 
             if (correctGuess) {
                 std::cout << "Ai ghicit corect!\n";
             } else {
                 std::cout << "Nu ai ghicit corect.\n";
-                game.requestHintOnIncorrectGuess(); // Oferă hint după un răspuns greșit, dacă e disponibil
             }
         }
 
-        if (Game.isGameWon()) {
-            std::cout << "Felicitari! Ai ghicit cuvantul: " << Game.getGuessedWord() << "\n";
+        if (game.isGameWon()) {
+            std::cout << "Felicitari! Ai ghicit cuvantul: " << game.getGuessedWord() << "\n";
         } else {
-            std::cout << "Ai pierdut! Cuvantul era: " << Game.getSelectedWord() << "\n"; // Using the getter method
+            std::cout << "Ai pierdut! Cuvantul era: " << game.getSelectedWord() << "\n";
         }
+    } catch (const std::exception& ex) {
+        std::cerr << "Eroare: " << ex.what() << "\n";
     }
+}
 
-    bool HangmanUI::gameWon() const {
-        return Game.isGameWon();
-    }
+// Check if the game has been won
+[[nodiscard]] bool HangmanUI::gameWon() const {
+    return game.isGameWon();
+}

@@ -8,11 +8,12 @@
 #include "Game.hpp"
 class HangmanUI {
 protected:
-    Game Game;
+    Game& game;
+    HintGame hintGame;
 public:
-    HangmanUI();
-    void start(HintGame game);
-    bool gameWon() const;
+    HangmanUI(Game& gameInstance, HintGame* hintGameInstance);
+    void start();
+    [[nodiscard]] bool gameWon() const;
 };
 
 

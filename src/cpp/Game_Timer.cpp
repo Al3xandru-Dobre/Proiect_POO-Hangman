@@ -21,3 +21,4 @@
         auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(currentTime - startTime).count();
         return timeLimit - elapsed;
     }
+

@@ -23,7 +23,6 @@ public:
 
     virtual void selectRandomWordFromCategory() = 0;
 
-
     [[nodiscard]] std::string getSelectedWord() const;
 
     [[nodiscard]] bool isLetterInWord(char letter) const;
@@ -48,10 +47,7 @@ public:
 class DefaultWordManager : public WordManager {
 public:
     DefaultWordManager() = default;
-    void selectRandomWordFromCategory() override {
-        // Implementarea metodei pentru selectarea unui cuvânt
-        std::cout << "Cuvânt selectat dintr-o categorie implicită.\n";
-    }
+    void selectRandomWordFromCategory() override;
 };
 
 

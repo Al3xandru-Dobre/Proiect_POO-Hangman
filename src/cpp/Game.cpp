@@ -5,8 +5,8 @@
 #include "headers/Game.hpp"
 #include "headers/Hint_Game.hpp"
 #include "headers/Word_Manager.hpp"
+#include "headers/Game_Timer.hpp"
 #include <iostream>
-#include <vector>
 #include <memory>
 
 Game::Game(std::unique_ptr<HintGame>hint_manager ,std::unique_ptr<WordManager> manager, int attempts)
@@ -16,6 +16,7 @@ Game::Game(std::unique_ptr<HintGame>hint_manager ,std::unique_ptr<WordManager> m
     wordManager->selectRandomWordFromCategory();
     guessedWord = std::string(wordManager->getSelectedWord().size(), '_');
 }
+
 
 bool Game::guessLetter(char letter) {
     bool found = false;
@@ -43,33 +44,36 @@ bool Game::guessWord(const std::string& word) {
     }
 }
 
-bool Game::isGameWon() const {
-    return guessedWord == wordManager->getSelectedWord();
+[[nondiscard]] bool Game::isGameWon() const {
+        return guessedWord == wordManager->getSelectedWord();
 }
 
-bool Game::isGameOver() const {
+[[nondiscard]] bool Game::isGameOver() const {
     return attemptsRemaining <= 0;
 }
 
-    int Game::getAttemptsRemaining() const {
+   [[nondiscard]] int Game::getAttemptsRemaining() const {
         return attemptsRemaining;
     }
-
-    std::string Game::getGuessedWord() const {
+[[nodiscard]] HintGame* Game::getHintGame() const {
+    return hintGame.get();
+}
+   [[nondiscard]] std::string Game::getGuessedWord() const {
         return guessedWord;
     }
 
-std::string Game::getSelectedWord() const {
+[[nondiscard]] std::string Game::getSelectedWord() const {
     return wordManager->getSelectedWord();
 }
 
-void Game::displayStatus() const {
+[[nondiscard]] void Game::displayStatus() const {
     std::cout << "Cuvant: " << guessedWord << "\n";
     std::cout << "Incercari ramase: " << attemptsRemaining << "\n";
 }
 
 void Game::handleHintRequest() {
     if (hintGame->getHintsRemaining() > 0) {
-        hintGame->requestHintOnIncorrectGuess(); // Oferă hint dacă este disponibil
+        hintGame->requestHintOnIncorrectGuess(); // Provides a hint if the user accepts and it is available
     }
+
 }
