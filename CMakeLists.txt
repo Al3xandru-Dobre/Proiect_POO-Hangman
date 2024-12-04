@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.29)
 project(hangman_demo_v0_1)
 
 set(CMAKE_CXX_STANDARD 20)
-
+include_directories(${CMAKE_SOURCE_DIR}/src/headers)
 add_executable(hangman_demo_v0_1 main.cpp
         src/cpp/scor.cpp
         src/headers/scor.hpp
