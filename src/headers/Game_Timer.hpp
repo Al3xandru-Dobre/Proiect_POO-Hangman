@@ -15,9 +15,9 @@ private:
 public:
     GameTimer(int limit);
 
-    bool isTimeUp() const;
+    [[nodiscard]] bool isTimeUp() const;
 
-    int getTimeRemaining() const ;
+    [[nodiscard]] int getTimeRemaining() const ;
 
     virtual ~GameTimer() = default;
 };

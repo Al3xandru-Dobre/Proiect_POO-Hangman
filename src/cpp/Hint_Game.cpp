@@ -47,7 +47,7 @@ bool HintGame::offerHintDirect() {
     if (hintsAvailable > 0) {
         try {
             char hint = getRandomUnrevealedLetter();
-            std::cout << "Hint: Litera '" << hint << "' se afla în cuvânt!\n";
+            std::cout << "Hint: Litera '" << hint << "' se afla in cuvant!\n";
             hintsAvailable--;
             return true;
         } catch(const std::runtime_error& e) {
@@ -68,7 +68,7 @@ bool HintGame::offerHint() {
         if (choice == "Da" || choice == "da") {
             try {
                 char hint = getRandomUnrevealedLetter();
-                std::cout << "Hint: Litera '" << hint << "' se află în cuvânt!\n";
+                std::cout << "Hint: Litera '" << hint << "' se afla in cuvant!\n";
                 hintsAvailable--;
                 return true;
             } catch (const std::runtime_error& e) {

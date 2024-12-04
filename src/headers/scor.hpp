@@ -16,9 +16,9 @@ public:
 
     void adaugaScor(int puncte);
 
-    int getScorCurent() const ;
+    [[nodiscard]] int getScorCurent() const ;
 
-    std::string getNumeJucator() const;
+    [[nodiscard]] std::string getNumeJucator() const;
 
     void afiseazaScor() const;
 };

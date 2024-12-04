@@ -20,7 +20,7 @@ public:
     bool offerHint();                         // Offers a hint if the user accepts
     bool offerHintDirect();                   // Offers a hint directly
     bool requestHintOnIncorrectGuess();       // Request a hint after an incorrect guess
-    int getHintsRemaining() const;            // Get remaining hints
+    [[nodiscard]] int getHintsRemaining() const;            // Get remaining hints
 };
 
 #endif // HINT_GAME_HPP
