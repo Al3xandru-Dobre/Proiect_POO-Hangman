@@ -2,7 +2,7 @@
 // Created by Alex on 20.11.2024.
 //
 
-#include "headers/Leaderboard.hpp"
+#include "src/headers/Leaderboard.hpp"
 
     void Leaderboard::adaugaJucator(const std::string& nume) {
         listaScoruri.emplace_back(nume);
