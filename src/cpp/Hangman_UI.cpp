@@ -1,4 +1,4 @@
-#include "headers/Hangman_UI.hpp"
+#include "src/headers/Hangman_UI.hpp"
 #include <iostream>
 
 //Constructor: receives configured instances of Game and HintGame

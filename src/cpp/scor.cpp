@@ -2,7 +2,7 @@
 // Created by Alex on 20.11.2024.
 //
 
-#include "headers/scor.hpp"
+#include "src/headers/scor.hpp"
 #include <iostream>
 
 

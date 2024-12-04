@@ -2,7 +2,7 @@
 // Created by Alex on 20.11.2024.
 //
 
-#include "headers/Word_Manager.hpp"
+#include "src/headers/Word_Manager.hpp"
 
 TechnologyWordManager::TechnologyWordManager() {
     loadWordsFromFile("technology_words.txt", "technology");

@@ -2,10 +2,10 @@
 // Created by Alex on 20.11.2024.
 //
 
-#include "headers/Game.hpp"
-#include "headers/Hint_Game.hpp"
-#include "headers/Word_Manager.hpp"
-#include "headers/Game_Timer.hpp"
+#include "src/headers/Game.hpp"
+#include "src/headers/Hint_Game.hpp"
+#include "src/headers/Word_Manager.hpp"
+#include "src/headers/Game_Timer.hpp"
 #include <iostream>
 #include <memory>
 
