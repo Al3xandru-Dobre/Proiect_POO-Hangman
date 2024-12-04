@@ -2,7 +2,7 @@
 // Created by Alex on 20.11.2024.
 //
 
-#include "headers/Game_Timer.hpp"
+#include "src/headers/Game_Timer.hpp"
 
 
 
