@@ -14,6 +14,10 @@ public:
     HangmanUI(Game& gameInstance, HintGame* hintGameInstance);
     void start();
     [[nodiscard]] bool gameWon() const;
+
+    Game* operator->();
+    const Game* operator->() const;
+
 };
 
 

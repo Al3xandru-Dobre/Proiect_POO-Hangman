@@ -2,7 +2,7 @@
 // Created by Alex on 20.11.2024.
 //
 
-#include "src/headers/Word_Manager.hpp"
+#include "Word_Manager.hpp"
 #include <ctime>
 #include <cstdlib>
 #include <fstream>

@@ -1,4 +1,4 @@
-#include "src/headers/Hint_Game.hpp"
+#include "Hint_Game.hpp"
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>

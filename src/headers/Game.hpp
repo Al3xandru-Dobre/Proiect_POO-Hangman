@@ -7,19 +7,22 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include "Scor.hpp"
 
 class HintGame;
 class WordManager;
 class GameTimer;
+
+
 class Game {
 protected:
     std::unique_ptr<WordManager> wordManager; // Pointer pentru gestiunea dinamică a categoriei
     std::string guessedWord; // Progresul cuvântului ghicit
     int attemptsRemaining;
     std::unique_ptr<HintGame> hintGame; // Pointer pentru gestiunea hinturilor
-
+    std::unique_ptr<Scor> scor; //Pointer pentru a gestiona scorul jucatorului
 public:
-    explicit Game(std::unique_ptr<HintGame> hint_manager,std::unique_ptr<WordManager> manager, int attempts = 6);
+    explicit Game(std::unique_ptr<HintGame> hint_manager,std::unique_ptr<WordManager> manager,std::unique_ptr<Scor> scor ,int attempts = 6);
     bool guessLetter(char letter); // Ghicirea unei litere
     bool guessWord(const std::string& word); // Ghicirea unui cuvânt
     [[nondiscard]] bool isGameWon() const; // Verifică dacă jocul a fost câștigat
@@ -30,6 +33,12 @@ public:
     [[nodiscard]] HintGame* getHintGame() const; // Returnează pointer la obiectul HintGame
     [[nondiscard]] void displayStatus() const; // Afișează starea jocului
     void handleHintRequest(); // Metodă care gestionează cererea de hint
+    void displayScore() const; // Afișează scorul curent
+
+
+    Scor* operator->();
+    const Scor* operator->() const;
+
     virtual ~Game() = default;
 };
 

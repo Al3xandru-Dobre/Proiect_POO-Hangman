@@ -2,7 +2,7 @@
 // Created by Alex on 03.12.2024.
 //
 
-#include "src/headers/Word_Manager.hpp"
+#include "Word_Manager.hpp"
 
 
 

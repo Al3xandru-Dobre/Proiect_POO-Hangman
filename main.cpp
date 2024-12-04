@@ -6,6 +6,14 @@
 #include <iostream>
 
 int main() {
+
+    std::string nume;
+    std::cout << "Introdu numele tau: "; std::cin >> nume;
+    Leaderboard leaderboard("leaderboard.txt");
+    std::unique_ptr<Scor> jucator = std::make_unique<Scor>(nume);
+
+
+
     int choice;
     std::cout << "Selectează o categorie:\n";
     std::cout << "1. Animale\n";
@@ -30,10 +38,11 @@ int main() {
     }
 
     auto hintGame = std::make_unique<HintGame>(3, wordManager.get());
-    Game game(std::move(hintGame), std::move(wordManager), 3);
+    Game game(std::move(hintGame), std::move(wordManager), std::move(jucator),3);
 
     HangmanUI ui(game, game.getHintGame());
     ui.start();
+    ui->Game::operator->()->trimiteScorLaLeaderboard();
     return 0;
 }
 

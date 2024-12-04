@@ -1,31 +1,28 @@
-//
-// Created by Alex on 20.11.2024.
-//
-
 #ifndef LEADERBOARD_HPP
 #define LEADERBOARD_HPP
 
-#include <iostream>
+#include "scor.hpp"
 #include <vector>
 #include <string>
-#include "scor.hpp"
+#include <fstream>
+#include <iostream>
 #include <algorithm>
 
-
-class Leaderboard : public Scor {
+class Leaderboard {
 private:
     std::vector<Scor> listaScoruri;
+    std::string fisierScoruri;
+
+    void incarcaScoruriDinFisier();
 
 public:
-    Leaderboard() : Scor("") {}
-
-    void adaugaJucator(const std::string& nume) ;
-
+    explicit Leaderboard(const std::string& numeFisier);
+    void adaugaJucator(const std::string& nume);
     void actualizeazaScor(const std::string& nume, int puncte);
+    void afiseazaLeaderboard() const;
 
-    void afiseazaLeaderboard() const ;
+    void salveazaScoruriInFisier() const;
+    [[nodiscard]] int obtineScorMaxim() const;
 };
 
-
-
-#endif //LEADERBOARD_HPP
+#endif // LEADERBOARD_HPP

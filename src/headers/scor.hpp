@@ -6,13 +6,14 @@
 #define SCOR_HPP
 
 #include <string>
+#include "Leaderboard.hpp"
 
 class Scor {
 protected:
-    int scorCurent;
+    int scorCurent = 0;
     std::string numeJucator;
 public:
-    Scor(const std::string& nume);
+    Scor(const std::string& nume = "Anonim");
 
     void adaugaScor(int puncte);
 
@@ -20,7 +21,10 @@ public:
 
     [[nodiscard]] std::string getNumeJucator() const;
 
+    void trimiteScorLaLeaderboard(Leaderboard& leaderboard) const;
+
     void afiseazaScor() const;
+    virtual ~Scor() = default;
 };
 
 

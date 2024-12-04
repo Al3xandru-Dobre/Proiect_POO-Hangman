@@ -1,4 +1,4 @@
-#include "src/headers/Hangman_UI.hpp"
+#include "Hangman_UI.hpp"
 #include <iostream>
 
 //Constructor: receives configured instances of Game and HintGame
@@ -38,8 +38,10 @@ void HangmanUI::start() {
 
         if (game.isGameWon()) {
             std::cout << "Felicitari! Ai ghicit cuvantul: " << game.getGuessedWord() << "\n";
+            game->afiseazaScor();
         } else {
             std::cout << "Ai pierdut! Cuvantul era: " << game.getSelectedWord() << "\n";
+            game->afiseazaScor();
         }
     } catch (const std::exception& ex) {
         std::cerr << "Eroare: " << ex.what() << "\n";
@@ -49,4 +51,14 @@ void HangmanUI::start() {
 // Check if the game has been won
 [[nodiscard]] bool HangmanUI::gameWon() const {
     return game.isGameWon();
+}
+
+
+Game* HangmanUI::operator->() {
+    return &game; // Returnează pointerul brut către obiectul `Scor`
+}
+
+// Operator -> pentru acces la metodele const din Scor
+const Game* HangmanUI::operator->() const {
+    return &game; // Returnează pointerul brut către obiectul `Scor`
 }
