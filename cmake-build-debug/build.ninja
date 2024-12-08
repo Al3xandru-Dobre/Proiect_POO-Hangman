@@ -133,6 +133,20 @@ build CMakeFiles/hangman_demo_v0_1.dir/src/cpp/DefaultWordManager.cpp.obj: CXX_C
   OBJECT_DIR = CMakeFiles\hangman_demo_v0_1.dir
   OBJECT_FILE_DIR = CMakeFiles\hangman_demo_v0_1.dir\src\cpp
 
+build CMakeFiles/hangman_demo_v0_1.dir/src/cpp/HangmanGameManager.cpp.obj: CXX_COMPILER__hangman_demo_v0_1_unscanned_Debug E$:/POO/hangman_demo_v0.2/src/cpp/HangmanGameManager.cpp || cmake_object_order_depends_target_hangman_demo_v0_1
+  DEP_FILE = CMakeFiles\hangman_demo_v0_1.dir\src\cpp\HangmanGameManager.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -IE:/POO/hangman_demo_v0.2/src/headers
+  OBJECT_DIR = CMakeFiles\hangman_demo_v0_1.dir
+  OBJECT_FILE_DIR = CMakeFiles\hangman_demo_v0_1.dir\src\cpp
+
+build CMakeFiles/hangman_demo_v0_1.dir/src/cpp/invalidInputError.cpp.obj: CXX_COMPILER__hangman_demo_v0_1_unscanned_Debug E$:/POO/hangman_demo_v0.2/src/cpp/invalidInputError.cpp || cmake_object_order_depends_target_hangman_demo_v0_1
+  DEP_FILE = CMakeFiles\hangman_demo_v0_1.dir\src\cpp\invalidInputError.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -IE:/POO/hangman_demo_v0.2/src/headers
+  OBJECT_DIR = CMakeFiles\hangman_demo_v0_1.dir
+  OBJECT_FILE_DIR = CMakeFiles\hangman_demo_v0_1.dir\src\cpp
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target hangman_demo_v0_1
@@ -141,7 +155,7 @@ build CMakeFiles/hangman_demo_v0_1.dir/src/cpp/DefaultWordManager.cpp.obj: CXX_C
 #############################################
 # Link the executable hangman_demo_v0_1.exe
 
-build hangman_demo_v0_1.exe: CXX_EXECUTABLE_LINKER__hangman_demo_v0_1_Debug CMakeFiles/hangman_demo_v0_1.dir/main.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/scor.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Leaderboard.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game_Timer.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Word_Manager.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hint_Game.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hangman_UI.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Geografie.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Technology.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Animal.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/DefaultWordManager.cpp.obj
+build hangman_demo_v0_1.exe: CXX_EXECUTABLE_LINKER__hangman_demo_v0_1_Debug CMakeFiles/hangman_demo_v0_1.dir/main.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/scor.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Leaderboard.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game_Timer.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Word_Manager.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Game.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hint_Game.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Hangman_UI.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Geografie.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Technology.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/Animal.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/DefaultWordManager.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/HangmanGameManager.cpp.obj CMakeFiles/hangman_demo_v0_1.dir/src/cpp/invalidInputError.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\hangman_demo_v0_1.dir

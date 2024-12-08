@@ -89,7 +89,9 @@ void Game::handleHintRequest() {
 Scor* Game::operator->() {
     return scor.get(); // Returnează pointerul brut către obiectul `Scor`
 }
-
+/*
+    Am suprascris operatorii pentru a acesa din game scorul si apoi leaderboardul
+*/
 // Operator -> pentru acces la metodele const din Scor
 const Scor* Game::operator->() const {
     return scor.get(); // Returnează pointerul brut către obiectul `Scor`
@@ -98,4 +100,22 @@ const Scor* Game::operator->() const {
 void Game::displayScore() const {
     scor->afiseazaScor();
 }
+
+Game::Game(Game &&obj) noexcept : wordManager(std::move(obj.wordManager)), guessedWord(std::move(obj.guessedWord)),
+                                  attemptsRemaining(obj.attemptsRemaining), hintGame(std::move(obj.hintGame)),
+                                  scor(std::move(obj.scor)) {}
+
+Game &Game::operator=(Game &&obj) noexcept {
+    if(this != &obj) {
+        hintGame = std::move(obj.hintGame);
+        wordManager = std::move(obj.wordManager);
+        guessedWord = std::move(obj.guessedWord);
+        attemptsRemaining = obj.attemptsRemaining;
+        scor = std::move(obj.scor);
+
+    }
+    return *this;
+}
+
+
 

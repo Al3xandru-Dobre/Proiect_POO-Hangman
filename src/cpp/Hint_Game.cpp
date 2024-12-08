@@ -92,3 +92,20 @@ bool HintGame::requestHintOnIncorrectGuess() {
 int HintGame::getHintsRemaining() const {
     return hintsAvailable;
 }
+
+
+HintGame::HintGame(const HintGame &obj) {
+    hintsAvailable = obj.hintsAvailable;
+    wordManager = obj.wordManager;
+    guessedLetters = obj.guessedLetters;
+}
+
+HintGame &HintGame::operator=(const HintGame &obj) {
+    if(this != &obj) {
+        hintsAvailable = obj.hintsAvailable;
+        wordManager = obj.wordManager;
+        guessedLetters = obj.guessedLetters;
+    }
+    return *this;
+}
+

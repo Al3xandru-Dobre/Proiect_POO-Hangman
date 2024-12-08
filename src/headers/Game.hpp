@@ -23,6 +23,7 @@ protected:
     std::unique_ptr<Scor> scor; //Pointer pentru a gestiona scorul jucatorului
 public:
     explicit Game(std::unique_ptr<HintGame> hint_manager,std::unique_ptr<WordManager> manager,std::unique_ptr<Scor> scor ,int attempts = 6);
+    Game() = default;
     bool guessLetter(char letter); // Ghicirea unei litere
     bool guessWord(const std::string& word); // Ghicirea unui cuvânt
     [[nondiscard]] bool isGameWon() const; // Verifică dacă jocul a fost câștigat
@@ -34,6 +35,12 @@ public:
     [[nondiscard]] void displayStatus() const; // Afișează starea jocului
     void handleHintRequest(); // Metodă care gestionează cererea de hint
     void displayScore() const; // Afișează scorul curent
+
+    Game(Game && obj) noexcept;
+    Game& operator=(Game && obj) noexcept;
+
+    Game(const Game& obj) = delete;
+    Game& operator=(const Game& obj) = delete;
 
 
     Scor* operator->();

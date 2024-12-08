@@ -18,6 +18,10 @@ public:
     Game* operator->();
     const Game* operator->() const;
 
+    HangmanUI(const HangmanUI& obj) = delete;
+    HangmanUI& operator=(const HangmanUI& obj) = delete;
+    HangmanUI(HangmanUI&& obj) noexcept;
+    HangmanUI& operator=(HangmanUI&& obj) noexcept ;
 };
 
 

@@ -16,11 +16,9 @@ void Leaderboard::incarcaScoruriDinFisier() {
     std::string nume;
     int scor;
     while (fisier >> nume >> scor) {
-        Scor jucator(nume);
-        jucator.adaugaScor(scor);
-        listaScoruri.emplace_back(jucator);
+        listaScoruri[nume] = Scor(nume);
+        listaScoruri[nume].adaugaScor(scor);
     }
-
     fisier.close();
 }
 
@@ -29,53 +27,34 @@ void Leaderboard::salveazaScoruriInFisier() const {
     std::ofstream fisier(fisierScoruri, std::ios::trunc);
     if (!fisier.is_open()) {
         std::cerr << "Nu s-a putut deschide fișierul pentru scriere: " << fisierScoruri << "\n";
-        return;
+        exit(1);
     }
-
-    for (const auto& scor : listaScoruri) {
-        fisier << scor.getNumeJucator() << " " << scor.getScorCurent() << "\n";
+    for(const auto& [nume, scor] : listaScoruri) {
+        fisier << nume << " " << scor.getScorCurent() << "\n";
     }
-
     fisier.close();
 }
 
 // Metodă publică: Obține scorul maxim
 int Leaderboard::obtineScorMaxim() const {
-    if (listaScoruri.empty()) {
-        return 0;
+    int maxScor = 0;
+    for(const auto& [nume, scor] : listaScoruri) {
+        maxScor = std::max(maxScor, scor.getScorCurent());
     }
-
-    return std::max_element(listaScoruri.begin(), listaScoruri.end(), [](const Scor& a, const Scor& b) {
-        return a.getScorCurent() < b.getScorCurent();
-    })->getScorCurent();
+    return maxScor;
 }
 
 void Leaderboard::adaugaJucator(const std::string& nume) {
-    // Verifică dacă jucătorul există deja
-    for (const auto& scor : listaScoruri) {
-        if (scor.getNumeJucator() == nume) {
-            std::cout << "Jucătorul " << nume << " există deja pe leaderboard.\n";
-            return;
-        }
+    if (listaScoruri.find(nume) != listaScoruri.end()) {
+        std::cout << "Jucătorul " << nume << " există deja în leaderboard.\n";
+    } else {
+        listaScoruri[nume] = Scor(nume);
+        std::cout << "Jucătorul " << nume << " a fost adăugat în leaderboard.\n";
     }
-    // Adaugă un nou jucător cu scorul inițial 0
-    listaScoruri.emplace_back(nume);
-    std::cout << "Jucătorul " << nume << " a fost adăugat pe leaderboard.\n";
 }
 
 void Leaderboard::actualizeazaScor(const std::string& nume, int puncte) {
-    for (auto& scor : listaScoruri) {
-        if (scor.getNumeJucator() == nume) {
-            scor.adaugaScor(puncte); // Adaugă punctele la scorul curent
-            std::cout << "Scorul pentru " << nume << " a fost actualizat la " << scor.getScorCurent() << ".\n";
-            return;
-        }
-    }
-
-    // Dacă jucătorul nu există, îl adaugăm și îi atribuim punctele
-    listaScoruri.emplace_back(nume);
-    listaScoruri.back().adaugaScor(puncte);
-    std::cout << "Jucătorul " << nume << " a fost adăugat cu scorul inițial de " << puncte << ".\n";
+    listaScoruri[nume].adaugaScor(puncte);
 }
 
 // Afișează leaderboard-ul ordonat
@@ -84,15 +63,23 @@ void Leaderboard::afiseazaLeaderboard() const {
         std::cout << "Leaderboard-ul este gol.\n";
         return;
     }
+    std::vector<std::pair<std::string, int>> scoruri;
+    for(const auto& [nume,scor] : listaScoruri) {
+        scoruri.emplace_back(nume, scor.getScorCurent());
+    }
 
-    // Creează o copie a listei pentru a o sorta
-    std::vector<Scor> scoruriOrdonate = listaScoruri;
-    std::sort(scoruriOrdonate.begin(), scoruriOrdonate.end(), [](const Scor& a, const Scor& b) {
-        return a.getScorCurent() > b.getScorCurent(); // Sortare descrescătoare după scor
+    //Sortare descrescatoare după scor
+    std::sort(scoruri.begin(), scoruri.end(), [](const std::pair<std::string, int>& a, const std::pair<std::string, int>& b) {
+        return a.second > b.second;
     });
 
     std::cout << "Leaderboard:\n";
-    for (const auto& scor : scoruriOrdonate) {
-        std::cout << scor.getNumeJucator() << ": " << scor.getScorCurent() << "\n";
+    for (const auto& [nume, scor] : scoruri) {
+        std::cout << nume << ": " << scor << "\n";
     }
+}
+
+int Leaderboard::obtineScorJucator(const std::string &nume) const {
+    auto it = listaScoruri.find(nume);
+    return (it != listaScoruri.end()) ? it->second.getScorCurent() : 0;
 }

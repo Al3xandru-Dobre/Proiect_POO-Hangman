@@ -21,6 +21,12 @@ public:
     bool offerHintDirect();                   // Offers a hint directly
     bool requestHintOnIncorrectGuess();       // Request a hint after an incorrect guess
     [[nodiscard]] int getHintsRemaining() const;            // Get remaining hints
+
+    HintGame(const HintGame& obj) ;
+    HintGame& operator=(const HintGame& obj) ;
+
+    //HintGame(HintGame&& obj) noexcept;
+    //HintGame& operator=(HintGame&& obj) noexcept;
 };
 
 #endif // HINT_GAME_HPP

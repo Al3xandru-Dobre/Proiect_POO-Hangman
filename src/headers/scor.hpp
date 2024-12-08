@@ -7,6 +7,7 @@
 
 #include <string>
 #include "Leaderboard.hpp"
+class Leaderboard;
 
 class Scor {
 protected:

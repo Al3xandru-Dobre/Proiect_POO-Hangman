@@ -1,4 +1,6 @@
 #include "Hangman_UI.hpp"
+#include "Game.hpp"
+#include "Hint_Game.hpp"
 #include <iostream>
 
 //Constructor: receives configured instances of Game and HintGame
@@ -57,8 +59,35 @@ void HangmanUI::start() {
 Game* HangmanUI::operator->() {
     return &game; // Returnează pointerul brut către obiectul `Scor`
 }
-
+/*
+    Am suprascris operatorul pentru a putea acceasa memmbrii lui Game in interiorul lui HangmanUI
+    Fiindca am suprascris si operatorul in Game pt scor, prin Game::operator->()-> pot merge in in scor si apoi in Leaderboard
+*/
 // Operator -> pentru acces la metodele const din Scor
 const Game* HangmanUI::operator->() const {
     return &game; // Returnează pointerul brut către obiectul `Scor`
+}
+
+// Move constructor
+HangmanUI::HangmanUI(HangmanUI&& obj) noexcept
+    : game(obj.game), hintGame(obj.hintGame) {
+    //obj.hintGame = nullptr;
+}
+
+// Move assignment operator
+HangmanUI& HangmanUI::operator=(HangmanUI&& obj) noexcept {
+    if (this != &obj) {  // Verificăm auto-asignarea
+        // Eliberăm resursele existente (dacă e nevoie)
+        //game = nullptr;       // sau delete game dacă este un pointer brut
+        //hintGame = nullptr;
+
+        // Mutăm resursele din obiectul sursă
+        game = std::move(obj.game);
+        hintGame = std::move(obj.hintGame);
+
+        // Resetăm obiectul sursă
+        //obj.game = nullptr;
+       // obj.hintGame = nullptr;
+    }
+    return *this;
 }
