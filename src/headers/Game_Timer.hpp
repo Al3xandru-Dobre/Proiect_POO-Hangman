@@ -8,6 +8,12 @@
 #include <iostream>
 #include <cstdlib>
 
+/*
+ *Aceasta clasa are ca scop gestionarea timpului de joc
+ *Nu am setat pentru modul de joc, dar, in cazul in care se doreste, se poate seta un timp limita pentru joc
+ *In momentul acesta serveste ca flag pentru inchiderea jocului
+ */
+
 class GameTimer {
 private:
     std::chrono::steady_clock::time_point startTime;

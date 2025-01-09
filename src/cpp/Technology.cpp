@@ -2,13 +2,13 @@
 // Created by Alex on 20.11.2024.
 //
 
-#include "Word_Manager.hpp"
+#include "Technology.hpp"
 
 TechnologyWordManager::TechnologyWordManager() {
     loadWordsFromFile("technology_words.txt", "technology");
 }
 
-void TechnologyWordManager::selectRandomWordFromCategory() {
+void TechnologyWordManager::selectRandomWordFromCategory(){
     const auto& words = wordMap["technology"];
     if (!words.empty()) {
         selectedWord = words[std::rand() % words.size()];

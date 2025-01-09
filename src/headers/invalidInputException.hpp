@@ -8,6 +8,10 @@
 #include <exception>
 #include <string>
 #include <utility>
+/*
+ *Aceasta clasa este folosita pentru a genera exceptii personalizate
+ *Este de mare ajutor mai ales cand ceva nu merge sau nu s-a introdus corect / generat bine, deoarece permite remedieri si tratarea cazuri speciale
+ */
 
 class InvalidInputException : public std::exception {
 private:

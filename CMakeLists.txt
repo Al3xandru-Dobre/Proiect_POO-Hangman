@@ -27,4 +27,11 @@ add_executable(hangman_demo_v0_1 main.cpp
         src/cpp/HangmanGameManager.cpp
         src/cpp/invalidInputError.cpp
         src/headers/invalidInputException.hpp
+        src/headers/WordManagerFacotry.hpp
+        src/headers/Subject.hpp
+        src/headers/Observer.hpp
+        src/headers/Animal.hpp
+        src/headers/Geografie.hpp
+        src/headers/Geografie.hpp
+        src/headers/DefaultWordManager.hpp
 )

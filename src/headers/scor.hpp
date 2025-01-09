@@ -7,6 +7,8 @@
 
 #include <string>
 #include "Leaderboard.hpp"
+#include "Observer.hpp"
+#include "Subject.hpp"
 class Leaderboard;
 
 class Scor {
@@ -26,6 +28,7 @@ public:
 
     void afiseazaScor() const;
     virtual ~Scor() = default;
+
 };
 
 

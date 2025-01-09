@@ -2,14 +2,13 @@
 // Created by Alex on 20.11.2024.
 //
 
-#include "Word_Manager.hpp"
-
+#include "Geografie.hpp"
 
 GeographyWordManager::GeographyWordManager() {
     loadWordsFromFile("geography_words.txt", "geography");
 }
 
-void GeographyWordManager::selectRandomWordFromCategory() {
+void GeographyWordManager::selectRandomWordFromCategory(){
     const auto& words = wordMap["geography"];
     if (!words.empty()) {
         selectedWord = words[std::rand() % words.size()];

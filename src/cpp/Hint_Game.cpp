@@ -6,7 +6,11 @@
 
 // Constructor
 HintGame::HintGame(int maxHints, WordManager* manager)
-    : hintsAvailable(maxHints), wordManager(manager) {}
+    : hintsAvailable(maxHints), wordManager(manager) {
+    if(!manager) {
+        throw std::runtime_error("WordManager is not set!");
+    }
+}
 
 // Destructor
 HintGame::~HintGame() = default;

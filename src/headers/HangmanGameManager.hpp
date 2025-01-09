@@ -11,7 +11,12 @@
 #include "Leaderboard.hpp"
 #include "Hangman_UI.hpp"
 #include <memory>
-
+/*
+ *Aceasta clasa contine toate instantele necesare pentru derularea jocului
+ *in ea sunt initializate toate obicetele necesare pentru joc, precum si interfata grafica
+ *Scopul ei este sa gestioneze elementele, fiind mai propice pentru a fi folosita in main si modulara daca se doresc aduse chiar mai multe functionalitati
+ *
+ */
 
 class HangmanGameManager {
     std::unique_ptr <Scor> jucator;

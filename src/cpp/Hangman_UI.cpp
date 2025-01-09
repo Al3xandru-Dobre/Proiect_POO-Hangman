@@ -5,16 +5,20 @@
 
 //Constructor: receives configured instances of Game and HintGame
 HangmanUI::HangmanUI(Game& gameInstance, HintGame* hintInstance)
-    : game(gameInstance), hintGame(*hintInstance) {}
+    : game(gameInstance), hintGame(*hintInstance) {
+    std::cout << "HangmanUI: Constructor apelat cu HintGame: "
+              << (hintInstance != nullptr ? "Valid" : "Nullptr") << "\n";
+    game.addObserver(this);
+}
 
-// Starts the game
 void HangmanUI::start() {
     std::string input;
     std::cout << "Bine ai venit la jocul de Spanzuratoarea!\n";
-
+    update();
     try {
         while (!game.isGameOver() && !game.isGameWon()) {
-            game.displayStatus(); // Display the progress of the game
+            game.displayStatus();
+
             std::cout << "Introdu o litera sau un cuvant complet (sau scrie 'Hint' pentru un indiciu): ";
             std::cin >> input;
 
@@ -24,10 +28,10 @@ void HangmanUI::start() {
             }
 
             bool correctGuess;
-            if (input.size() == 1) { // a single letter
+            if (input.size() == 1) { //Logica pentru o singura litera introdusa
                 char letter = input[0];
                 correctGuess = game.guessLetter(letter);
-            } else { // It is a whole word
+            } else { //Logica pentru cuvantul introdus
                 correctGuess = game.guessWord(input);
             }
 
@@ -48,9 +52,9 @@ void HangmanUI::start() {
     } catch (const std::exception& ex) {
         std::cerr << "Eroare: " << ex.what() << "\n";
     }
+    std::cout << "Jocul s-a terminat.\n";
 }
 
-// Check if the game has been won
 [[nodiscard]] bool HangmanUI::gameWon() const {
     return game.isGameWon();
 }

@@ -2,8 +2,7 @@
 // Created by Alex on 03.12.2024.
 //
 
-#include "Word_Manager.hpp"
-
+#include "DefaultWordManager.hpp"
 
 
 void DefaultWordManager::selectRandomWordFromCategory() {

@@ -10,8 +10,14 @@
 #include <unordered_map>
 
 class Scor;
+/*
+ *Aceasta clasa are ca scop de a pastra scorurile jucatorilor, si de a le actualiza
+ *Scorurile sunt primite de la joc si sunt pastrate in memorie, intr-un fisier care se updateaza la fiecare joc
+ *Exista si metode de resetare a scorurilor, de afisare a scorurilor si de adaugare a unui jucator, cat si de gasire a unui jucator
+ *
+ */
 
-class Leaderboard {
+class Leaderboard{
 private:
     std::unordered_map<std::string, Scor>listaScoruri;
     std::string fisierScoruri;
@@ -20,7 +26,6 @@ private:
 
 public:
     explicit Leaderboard(const std::string& numeFisier);
-
     void adaugaJucator(const std::string& nume);
     void actualizeazaScor(const std::string& nume, int puncte);
     void afiseazaLeaderboard() const;

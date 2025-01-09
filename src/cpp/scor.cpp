@@ -15,6 +15,7 @@ void Scor::adaugaScor(int puncte) {
     }
 }
 
+
 int Scor::getScorCurent() const {
     return scorCurent;
 }
@@ -30,3 +31,5 @@ void Scor::trimiteScorLaLeaderboard(Leaderboard& leaderboard) const {
 void Scor ::afiseazaScor() const  {
     std::cout << "Scorul jucatorului " << numeJucator << ": " << scorCurent << "\n";
 }
+
+

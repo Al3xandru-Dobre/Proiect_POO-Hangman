@@ -83,3 +83,4 @@ int Leaderboard::obtineScorJucator(const std::string &nume) const {
     auto it = listaScoruri.find(nume);
     return (it != listaScoruri.end()) ? it->second.getScorCurent() : 0;
 }
+

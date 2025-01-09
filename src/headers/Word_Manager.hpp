@@ -10,6 +10,12 @@
 #include <stdexcept>
 #include <iostream>
 
+/*
+ *Aceasta clasa are ca scop gestionarea cuvintelor
+ *Cuvintele sunt alese random dintr-un fisier text, in functie de categoria aleasa
+ *Am folosit un hash table pentru a stoca cuvintele, pentru a le putea accesa rapid
+ *are mai multe derivate pentru categorii diferite de cuvinte
+ */
 class WordManager {
 protected:
     std::unordered_map<std::string, std::vector<std::string>> wordMap; // Hash table pentru categorii de cuvinte
@@ -21,41 +27,12 @@ public:
 
     virtual ~WordManager() = default;
 
+
     virtual void selectRandomWordFromCategory() = 0;
 
     [[nodiscard]] std::string getSelectedWord() const;
 
     [[nodiscard]] bool isLetterInWord(char letter) const;
-};
-
-class AnimalWordManager : public WordManager {
-public:
-    AnimalWordManager();
-
-    void selectRandomWordFromCategory() override;
-};
-
-
-class TechnologyWordManager : public WordManager {
-public:
-    TechnologyWordManager();
-
-    void selectRandomWordFromCategory() override;
-};
-
-
-class DefaultWordManager : public WordManager {
-public:
-    DefaultWordManager() = default;
-    void selectRandomWordFromCategory() override;
-};
-
-
-class GeographyWordManager : public WordManager {
-public:
-    GeographyWordManager();
-
-    void selectRandomWordFromCategory() override;
 };
 
 #endif //WORD_MANAGER_HPP

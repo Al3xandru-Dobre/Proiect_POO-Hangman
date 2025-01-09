@@ -4,6 +4,13 @@
 #include "Word_Manager.hpp"
 #include <vector>
 #include <string>
+/*
+ *Aceasta clasa are ca scop gestionarea hinturilor
+ *folosesete un pointer catre WordManager pentru a putea accesa cuvintele si a oferi hinturi, cu litere unice alese din cuvant
+ *poate sa ofere hinturi directe sau sa astepte cererea jucatorului
+ *da reveal la toate pozitile cu litera aleasa
+ *foloseste o functie din C++11 pentru a alege un numar random
+ */
 
 class HintGame {
 protected:

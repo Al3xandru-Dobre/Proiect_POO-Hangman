@@ -2,7 +2,7 @@
 // Created by Alex on 20.11.2024.
 //
 
-#include "Word_Manager.hpp"
+#include "Animal.hpp"
 
 AnimalWordManager::AnimalWordManager() {
     loadWordsFromFile("animal_words.txt", "animals");
