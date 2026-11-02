@@ -1,65 +1,47 @@
-#include "src/headers/Leaderboard.hpp"
-#include "src/headers/Game_Timer.hpp"
-#include "src/headers/Hangman_UI.hpp"
-#include "src/headers/Word_Manager.hpp"
-#include "src/headers/Game.hpp"
-#include "src/headers/Hint_Game.hpp"
+#include <cstdlib>
+#include <cstring>
+#include <exception>
+#include <iostream>
+#include <memory>
 
-int main() {
-    try {
-        int choice;
-        std::cout << "Selecteaza o categorie:\n";
-        std::cout << "1. Animale\n";
-        std::cout << "2. Tehnologie\n";
-        std::cout << "3. Geografie\n";
-        std::cout << "Alegerea ta: ";
-        std::cin >> choice;
+#include "headers/Console_UI.hpp"
+#include "headers/User_Interface.hpp"
 
-        std::unique_ptr<WordManager> wordManager;
-        std::vector<std::string> hints = {"Hint 1", "Hint 2", "Hint 3"};
-        switch (choice) {
-            case 1:
-                wordManager = std::make_unique<AnimalWordManager>();
-            break;
-            case 2:
-                wordManager = std::make_unique<TechnologyWordManager>();
-            break;
-            case 3:
-                wordManager = std::make_unique<GeographyWordManager>();
-            break;
-            default:
-                std::cout << "Categorie invalida! Jocul se va închide.\n";
-            return 1;
+#ifdef HANGMAN_WITH_GUI
+#include "headers/Hangman_UI.hpp"
+#endif
+
+// Porneste interfata grafica implicit; cu argumentul --console porneste varianta text.
+int main(int argc, char* argv[]) {
+    [[maybe_unused]] bool consoleMode = false;
+    for (int i = 1; i < argc; ++i) {
+        if (std::strcmp(argv[i], "--console") == 0) {
+            consoleMode = true;
         }
-
-        auto hintGame = std::make_unique<HintGame>(3);
-        hintGame->setHints(hints);
-
-        Game game(std::move(hintGame),std::move(wordManager), 6);
-        while (!game.isGameOver() && !game.isGameWon()) {
-            game.displayStatus();
-            std::cout << "Ghiceste o litera sau cuvant: ";
-
-            std::string guess;
-            std::cin >> guess;
-
-            if (guess.size() == 1) {
-                char letter = std::tolower(guess[0]);
-                game.guessLetter(letter);
-            } else {
-                game.guessWord(guess);
-            }
-        }
-
-        if (game.isGameWon()) {
-            std::cout << "Felicitari! Ai ghicit cuvantul: " << game.getSelectedWord() << "\n";
-        } else {
-            std::cout << "Ai pierdut! Cuvantul era: " << game.getSelectedWord() << "\n";
-        }
-
-    } catch (const std::exception& ex) {
-        std::cerr << "Eroare: " << ex.what() << "\n";
     }
 
-    return 0;
+#if defined(HANGMAN_WITH_GUI) && defined(__linux__)
+    // Fara server grafic, SFML apeleaza std::abort() (nu arunca exceptie),
+    // asa ca verificam inainte si trecem pe varianta text.
+    if (!consoleMode && !std::getenv("DISPLAY")) {
+        std::cerr << "Nu exista afisaj grafic (DISPLAY); pornesc varianta text.\n";
+        consoleMode = true;
+    }
+#endif
+
+    try {
+        std::unique_ptr<UserInterface> ui; // polimorfism: tipul concret se alege la rulare
+#ifdef HANGMAN_WITH_GUI
+        if (!consoleMode) {
+            ui = std::make_unique<HangmanUI>();
+        }
+#endif
+        if (!ui) {
+            ui = std::make_unique<ConsoleUI>();
+        }
+        return ui->run();
+    } catch (const std::exception& ex) {
+        std::cerr << "Eroare: " << ex.what() << "\n";
+        return 1;
+    }
 }
