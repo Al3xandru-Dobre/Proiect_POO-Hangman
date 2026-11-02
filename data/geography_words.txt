@@ -1,0 +1,17 @@
+# Categoria: Geografie
+mountain
+river
+ocean
+valley
+continent
+volcano
+desert
+glacier
+island
+peninsula
+plateau
+canyon
+waterfall
+equator
+archipelago
+new york

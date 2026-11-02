@@ -1,0 +1,21 @@
+# Categoria: Animale (un cuvant pe linie, liniile cu # sunt ignorate)
+elephant
+giraffe
+kangaroo
+dolphin
+penguin
+cheetah
+octopus
+squirrel
+hedgehog
+crocodile
+butterfly
+flamingo
+chameleon
+rhinoceros
+wolf
+eagle
+tiger
+zebra
+panda
+koala

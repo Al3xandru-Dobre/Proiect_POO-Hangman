@@ -1,0 +1,12 @@
+# Directoare de build (CLion / CMake)
+cmake-build-*/
+build/
+out/
+
+# Fisiere IDE
+.idea/
+src/.idea/
+.vscode/
+
+# Date generate la rulare
+leaderboard.txt

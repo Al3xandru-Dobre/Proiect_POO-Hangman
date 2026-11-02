@@ -4,15 +4,6 @@
 
 #include "headers/Word_Manager.hpp"
 
-AnimalWordManager::AnimalWordManager() {
-    loadWordsFromFile("animal_words.txt", "animals");
-}
-
-void AnimalWordManager::selectRandomWordFromCategory() {
-    const auto& words = wordMap["animals"];
-    if (!words.empty()) {
-        selectedWord = words[std::rand() % words.size()];
-    } else {
-        throw std::runtime_error("No words available in the category: animals");
-    }
-}
+std::string AnimalWordManager::getCategoryKey() const { return "animals"; }
+std::string AnimalWordManager::getDisplayName() const { return "Animale"; }
+std::string AnimalWordManager::getDataFile() const { return "data/animal_words.txt"; }

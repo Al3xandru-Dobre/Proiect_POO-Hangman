@@ -4,22 +4,34 @@
 
 #ifndef GAME_TIMER_HPP
 #define GAME_TIMER_HPP
-#include <chrono>
-#include <iostream>
-#include <cstdlib>
 
+#include <chrono>
+
+// Cronometru de runda bazat pe std::chrono::steady_clock (monoton, nu sare
+// daca se schimba ora sistemului). O limita de 0 secunde inseamna "fara limita".
 class GameTimer {
 private:
-    std::chrono::steady_clock::time_point startTime;
-    int timeLimit;
+    using Clock = std::chrono::steady_clock;
+
+    Clock::time_point startTime;
+    Clock::time_point stopTime;
+    bool running = true;
+    int timeLimit; // secunde
+
+    [[nodiscard]] Clock::time_point now() const;
+
 public:
-    GameTimer(int limit);
+    explicit GameTimer(int limitSeconds = 0);
 
-    bool isTimeUp() const;
+    void restart();
+    void stop(); // ingheata timpul (la finalul rundei)
 
-    int getTimeRemaining() const ;
+    [[nodiscard]] bool hasLimit() const;
+    [[nodiscard]] int getTimeLimit() const;
+    [[nodiscard]] float getElapsedSeconds() const;
+    [[nodiscard]] bool isTimeUp() const;
+    [[nodiscard]] int getTimeRemaining() const;      // niciodata negativ
+    [[nodiscard]] float getRemainingFraction() const; // 1.0 -> 0.0 (pentru bara de timp)
 };
-
-
 
 #endif //GAME_TIMER_HPP

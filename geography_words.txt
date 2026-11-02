@@ -1,5 +1,0 @@
-mountain
-river
-ocean
-valley
-continent

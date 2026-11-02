@@ -1,0 +1,21 @@
+# Categoria: Tehnologie
+algorithm
+compiler
+keyboard
+processor
+database
+internet
+software
+hardware
+variable
+function
+pointer
+inheritance
+polymorphism
+encapsulation
+template
+iterator
+debugger
+network
+encryption
+framework

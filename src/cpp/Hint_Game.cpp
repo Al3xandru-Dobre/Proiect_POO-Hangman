@@ -3,31 +3,50 @@
 //
 
 #include "headers/Hint_Game.hpp"
-#include <iostream>
-HintGame::HintGame(int maxHints) : hintsAvailable(maxHints) {}
 
-void HintGame::setHints(const std::vector<std::string>& hintList) {
-    hints = hintList;
+#include <algorithm>
+#include <vector>
+
+#include "headers/Random.hpp"
+
+HintGame::HintGame(int maxHints) : hintsAvailable(std::max(0, maxHints)) {}
+
+std::optional<char> HintGame::getRandomUnrevealedLetter(const std::string& secret,
+                                                        const std::string& progress) const {
+    std::vector<char> candidates;
+    const std::size_t length = std::min(secret.size(), progress.size());
+    for (std::size_t i = 0; i < length; ++i) {
+        if (progress[i] == '_' &&
+            std::find(candidates.begin(), candidates.end(), secret[i]) == candidates.end()) {
+            candidates.push_back(secret[i]);
+        }
+    }
+    if (candidates.empty()) {
+        return std::nullopt;
+    }
+    return candidates[static_cast<std::size_t>(Random::between(0, static_cast<int>(candidates.size()) - 1))];
 }
 
-void HintGame::provideHint() {
-    if (hintsAvailable > 0 && !hints.empty()) {
-        std::cout << "Hint: " << hints.back() << "\n"; // Afișează hint-ul
-        hints.pop_back(); // Îndepărtează hint-ul folosit
-        hintsAvailable--; // Scade numărul de hinturi disponibile
-    } else {
-        std::cout << "Nu mai sunt hint-uri disponibile.\n";
+std::optional<char> HintGame::provideHint(const std::string& secret, const std::string& progress) {
+    if (!canProvideHint()) {
+        return std::nullopt;
     }
+    const auto letter = getRandomUnrevealedLetter(secret, progress);
+    if (letter) { // consumam hint-ul doar daca a dezvaluit ceva
+        --hintsAvailable;
+        ++hintsUsed;
+    }
+    return letter;
 }
 
-bool HintGame::requestHintOnIncorrectGuess() {
-    if (hintsAvailable > 0) {
-        provideHint();
-        return true;
-    }
-    return false;
+bool HintGame::canProvideHint() const {
+    return hintsAvailable > 0;
 }
 
 int HintGame::getHintsRemaining() const {
     return hintsAvailable;
+}
+
+int HintGame::getHintsUsed() const {
+    return hintsUsed;
 }
